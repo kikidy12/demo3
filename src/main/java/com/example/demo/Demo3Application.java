@@ -13,10 +13,6 @@ public class Demo3Application {
 		System.setProperty("com.amazonaws.sdk.disableEc2Metadata", "true");
 	}
 
-	static {
-		System.setProperty("com.amazonaws.sdk.disableEc2Metadata", "true");
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(Demo3Application.class, args);
 	}
