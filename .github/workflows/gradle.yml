@@ -19,7 +19,7 @@ permissions:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
 #    env:
 #      DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -51,8 +51,11 @@ jobs:
         path: ./src/main/resources/application.properties
 
     - name: Build with Gradle
-      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
-      with:
-        arguments: build
+      run: ./gradlew build
+
+#    - name: Build with Gradle
+#      uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
+#      with:
+#        arguments: build
 
 
