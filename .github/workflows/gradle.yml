@@ -21,36 +21,36 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+      DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+      DATA_BASE_USER_NAME: ${{ secrets.DATA_BASE_USER_NAME }}
+      DATA_BASE_USER_PASSWORD: ${{ secrets.DATA_BASE_USER_PASSWORD }}
+      AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+      ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 17
+    - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '11'
         distribution: 'temurin'
-        
-    - uses: actions/checkout@v3
-    - run: touch ./src/main/resources/application.properties
-    - run: echo "${{secrets.APPLICATION}}" > ./src/main/resources/application.properties
-    - uses: actions/upload-artifact@v2
-      with:
-        name: application.properties
-        path: ./src/main/resources/application.properties
-
-    - name: Use Secrets
-      run: |
-        export DATABASE_URL=${{ secrets.DATABASE_URL }}
-        export DATABASE_PORT=${{ secrets.DATABASE_PORT }}
-        export DATABASE_NAME=${{ secrets.DATABASE_NAME }}
-        export DATA_BASE_USER_NAME=${{ secrets.DATA_BASE_USER_NAME }}
-        export DATA_BASE_USER_PASSWORD=${{ secrets.DATA_BASE_USER_PASSWORD }}
-        export AWS_ACCESS_KEY=${{ secrets.AWS_ACCESS_KEY }}
-        export AWS_SECRET_KEY=${{ secrets.AWS_SECRET_KEY }}
-        export AWS_S3_BUCKET=${{ secrets.bbangeobung }}
-        export JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}
-        export ADMIN_TOKEN=${{ secrets.ADMIN_TOKEN }}
 
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: build
+
+
+#    - uses: actions/checkout@v3
+#    - run: touch ./src/main/resources/application.properties
+#    - run: echo "${{secrets.APPLICATION}}" > ./src/main/resources/application.properties
+#    - uses: actions/upload-artifact@v2
+#      with:
+#        name: application.properties
+#        path: ./src/main/resources/application.properties
