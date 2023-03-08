@@ -1,0 +1,23 @@
+branch-defaults:
+  main:
+    environment: kikidy1111-eb-dev
+deploy:
+  artifact: build/libs/demo3-0.0.1-SNAPSHOT.jar
+environment-defaults:
+  kikidy1111-eb-dev:
+    branch: null
+    repository: null
+global:
+  application_name: kikidy1111-eb
+  branch: null
+  default_ec2_keyname: null
+  default_platform: Corretto 17 running on 64bit Amazon Linux 2
+  default_region: ap-northeast-2
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: kikidy1111-eb-dev
+  repository: null
+  sc: git
+  workspace_type: Application
